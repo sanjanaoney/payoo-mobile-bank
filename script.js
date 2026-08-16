@@ -14,6 +14,7 @@ document.getElementById('loginButton')
     if(mobileNumberValueConverted===mobileNumber&&pinNumberValueConverted===pinNumber)
     {
         //console.log("all values matched")
+         localStorage.setItem("isLoggedIn", "true")
         window.location.href="./home.html"
     }
     else{

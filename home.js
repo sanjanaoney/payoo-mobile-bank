@@ -1,3 +1,6 @@
+if(localStorage.getItem("isLoggedIn") !== "true"){
+    window.location.href="./index.html"
+}
 const validPin=1234
 const transactionData=[]
 // function to get input values
@@ -81,6 +84,10 @@ const accountNumber=document.getElementById("account-number").value
 // const amount=parseInt(amountElement)
 //const amount=getValue("add-money") //reusuable code
 const amount=getInputValueNumber("add-amount")
+if(amount<=0){
+    alert("invalid amount")
+    return;
+}
 
 //const pin=parseInt(document.getElementById("add-pin").value)
 const pin=getInputValueNumber("add-pin")
@@ -127,6 +134,10 @@ const amount=getInputValueNumber("withdraw-amount")
 // const availableBalance=parseInt(document.getElementById("available-balance").innerText)
 const availableBalance=getInnerText("available-balance")
 
+if(amount<=0 || amount>availableBalance){
+    alert("invalid amount")
+    return;
+}
 // console.log(amount,availableBalance)
 const totalNewAvailableBalance=availableBalance-amount
 console.log(totalNewAvailableBalance)
@@ -290,4 +301,9 @@ document.getElementById("bill-button").addEventListener("click",function(){
 document.getElementById("transactions-button").addEventListener("click",function(){
     handleToggle("transactions-parent")
         handleButtonToggle("transactions-button")
+})
+
+document.getElementById("logout-button").addEventListener("click", function(){
+    localStorage.removeItem("isLoggedIn")
+    window.location.href="./index.html"
 })
