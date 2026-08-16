@@ -1,4 +1,5 @@
 const validPin=1234
+const transactionData=[]
 // function to get input values
 function getInputValueNumber(id){
 const inputField=document.getElementById(id)
@@ -104,6 +105,13 @@ const totalNewAvailableBalance=amount+availableBalance
 
 setInnerText(totalNewAvailableBalance)
 
+const data={
+    name:"Add Money",
+    date: new Date().toLocaleTimeString()
+}
+
+transactionData.push(data)
+console.log(transactionData)
 
 
 })
@@ -124,8 +132,45 @@ const totalNewAvailableBalance=availableBalance-amount
 console.log(totalNewAvailableBalance)
 // document.getElementById("available-balance").innerText=totalNewAvailableBalance
 setInnerText(totalNewAvailableBalance)
+
+
+const data={
+    name:"Cash Out",
+    date: new Date().toLocaleTimeString()
+}
+
+transactionData.push(data)
+console.log(transactionData)
 })
 
+
+document.getElementById("transactions-button").addEventListener("click",function(){
+    const transactionContainer=document.getElementById("transaction-container")
+    transactionContainer.innerText=""
+
+    for(const data of transactionData){
+        const div=document.createElement("div")
+        div.innerHTML=`    <div class="bg-white rounded-xl p-3 flex justify-between items-center">
+    <div class="flex items-center">
+        <div class="p-3 rounded-full bg-[#f4f5f7]">
+            <img src="./assets/wallet1.png"  class="mx-auto" alt="">
+
+        </div>
+        <div class="ml-3">
+            <h1>${data.name}</h1>
+            <p>${data.date}</p>
+
+        </div>
+
+    </div>
+    <i class="fa-solid fa-ellipsis-vertical"></i>
+
+</div>
+        `
+
+        transactionContainer.appendChild(div)
+    }
+})
 
 // toggling feature
 
@@ -232,4 +277,17 @@ document.getElementById("bonus-button").addEventListener("click",function(){
     // document.getElementById("bonus-button").classList.remove("border-gray-300")
     // document.getElementById("bonus-button").classList.add("border-[#0874f2]","bg-[#0874f20d]")
     handleButtonToggle("bonus-button")
+})
+
+document.getElementById("bonus-button").addEventListener("click",function(){
+    handleToggle("get-bonus-parent")
+        handleButtonToggle("bonus-button")
+})
+document.getElementById("bill-button").addEventListener("click",function(){
+    handleToggle("pay-bill-parent")
+        handleButtonToggle("bill-button")
+})
+document.getElementById("transactions-button").addEventListener("click",function(){
+    handleToggle("transactions-parent")
+        handleButtonToggle("transactions-button")
 })

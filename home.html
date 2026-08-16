@@ -56,12 +56,12 @@
             <h2>Get Bonus</h2>
 
         </div>
-        <div class="border-2  border-gray-300 text-center p-3 rounded-xl">
+        <div id="bill-button" class="form-btn border-2  border-gray-300 text-center p-3 rounded-xl">
             <img src="./assets/purse1.png" class="mx-auto" alt="">
             <h2>Pay Bill</h2>
 
         </div>
-        <div class="border-2  border-gray-300 text-center p-3 rounded-xl">
+        <div id="transactions-button" class="form-btn border-2  border-gray-300 text-center p-3 rounded-xl">
             <img src="./assets/transaction1.png" class="mx-auto" alt="">
             <h2>Transactions</h2>
 
@@ -161,8 +161,31 @@
  <h1 class="font-bold text-2xl p-3 ml-1">Get Bonus</h1>
   </div>
 
+  <!-- pay bill -->
 
+ <div class="form" id="pay-bill-parent" style="display:none;">
+ <h1 class="font-bold text-2xl p-3 ml-1">Pay Bill</h1>
+  </div>
+
+  <!-- Transaction -->
+ <div class="form" id="transactions-parent" style="display:none;">
+    <div class="flex justify-between items-center">
+        <h1 class="font-bold text-2xl p-3 ml-1 ">Transactions</h1>
+       <p class="text-[#08080880]">View All</p>
+    </div>
+<div id="transaction-container">
+
+</div>
+ 
  </div>
+ </div>
+
+ 
+   
+
+
+  
+
  <script src="./home.js"></script>
 </body>
 </html>
