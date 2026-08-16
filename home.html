@@ -46,12 +46,12 @@
             <h2>Cashout</h2>
 
         </div>
-        <div class="border-2  border-gray-300 text-center p-3 rounded-xl">
+        <div id="send-money" class="border-2  border-gray-300 text-center p-3 rounded-xl">
             <img src="./assets/money1.png" class="mx-auto" alt="">
             <h2>Send Money</h2>
 
         </div>
-        <div class="border-2  border-gray-300 text-center p-3 rounded-xl">
+        <div id="bonus-button" class="border-2  border-gray-300 text-center p-3 rounded-xl">
             <img src="./assets/bonus1.png" class="mx-auto" alt="">
             <h2>Get Bonus</h2>
 
@@ -74,7 +74,7 @@
 <!-- form -->
  <div class="all-form-sections max-w-lg mx-auto">
     <!-- add money -->
-   <div id="add-money-parent" style="display:none;">
+   <div class="form" id="add-money-parent">
     <h1 class="font-bold text-2xl p-3 ml-1">Add Money</h1>
     <form action="" class="bg-white rounded-2xl p-8 mt-3">
         <div>
@@ -116,7 +116,9 @@
   
  </div>
 
- <div id="cash-out-parent">
+ <!-- cash out  -->
+
+ <div class="form" id="cash-out-parent" style="display:none;">
     <h1 class="font-bold text-2xl p-3 ml-1">Cash Out</h1>
         <form action="" class="bg-white rounded-2xl p-8 mt-3">
 
@@ -147,6 +149,19 @@
     </form>
   
  </div>
+
+ <!-- send money -->
+   <div class="form" id="send-money-parent" style="display:none;">
+ <h1 class="font-bold text-2xl p-3 ml-1">Send Money</h1>
+  </div>
+
+  <!-- get bonus -->
+
+ <div class="form" id="get-bonus-parent" style="display:none;">
+ <h1 class="font-bold text-2xl p-3 ml-1">Get Bonus</h1>
+  </div>
+
+
  </div>
  <script src="./home.js"></script>
 </body>

@@ -29,6 +29,17 @@ const availableBalanceElement=document.getElementById("available-balance")
 availableBalanceElement.innerText=value
 }
 
+//function to toggle
+function handleToggle(id){
+const forms=document.getElementsByClassName("form")
+    // console.log(forms)
+    for(const form of forms){
+        // console.log(form)
+        form.style.display="none"
+    }
+    document.getElementById(id).style.display="block"
+}
+
 
 //add money feature
 // console.log("home js file connected")
@@ -106,11 +117,58 @@ setInnerText(totalNewAvailableBalance)
 // toggling feature
 
 document.getElementById("add-button").addEventListener("click",function(){
-    document.getElementById("cash-out-parent").style.display="none"
-    document.getElementById("add-money-parent").style.display="block"
+    // document.getElementById("cash-out-parent").style.display="none"
+    // document.getElementById("add-money-parent").style.display="block"
+    // document.getElementById("send-money-parent").style.display="none"
+
+    // const forms=document.getElementsByClassName("form")
+    // // console.log(forms)
+    // for(const form of forms){
+    //     // console.log(form)
+    //     form.style.display="none"
+    // }
+    // document.getElementById("add-money-parent").style.display="block"
+    handleToggle("add-money-parent")
+    
 })
 document.getElementById("cash-out-button").addEventListener("click",function(){
-    document.getElementById("add-money-parent").style.display="none"
-    document.getElementById("cash-out-parent").style.display="block"
+    // document.getElementById("add-money-parent").style.display="none"
+    // document.getElementById("send-money-parent").style.display="none"
+    // document.getElementById("cash-out-parent").style.display="block"
+    // const forms=document.getElementsByClassName("form")
+    // // console.log(forms)
+    // for(const form of forms){
+    //     // console.log(form)
+    //     form.style.display="none"
+    // }
+    // document.getElementById("cash-out-parent").style.display="block"
+    handleToggle("cash-out-parent")
     
+})
+
+document.getElementById("send-money").addEventListener("click",function(){
+    //  document.getElementById("add-money-parent").style.display="none"
+    //   document.getElementById("cash-out-parent").style.display="none"
+    //   document.getElementById("send-money-parent").style.display="block"
+    // const forms=document.getElementsByClassName("form")
+    // // console.log(forms)
+    // for(const form of forms){
+    //     // console.log(form)
+    //     form.style.display="none"
+    // }
+    // document.getElementById("send-money-parent").style.display="block"
+    handleToggle("send-money-parent")
+})
+document.getElementById("bonus-button").addEventListener("click",function(){
+    //  document.getElementById("add-money-parent").style.display="none"
+    //   document.getElementById("cash-out-parent").style.display="none"
+    //   document.getElementById("send-money-parent").style.display="block"
+    // const forms=document.getElementsByClassName("form")
+    // // console.log(forms)
+    // for(const form of forms){
+    //     // console.log(form)
+    //     form.style.display="none"
+    // }
+    // document.getElementById("get-bonus-parent").style.display="block"
+    handleToggle("get-bonus-parent")
 })
