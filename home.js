@@ -77,6 +77,10 @@ e.preventDefault()
 // document.getElementById("available-balance").innerText=totalNewAvailableBalance;
 // const bank=document.getElementById("bank").value
 const bank=getInputValue("bank");
+if(bank === ""){
+    alert("Please select a bank")
+    return;
+}
 const accountNumber=document.getElementById("account-number").value
 // const amount=parseInt(document.getElementById("add-amount").value)
 // const amountElement=document.getElementById("add-amount")
@@ -120,6 +124,14 @@ const data={
 transactionData.push(data)
 console.log(transactionData)
 
+alert("Money added successfully!")
+
+// clear input fields
+document.getElementById("bank").value = ""
+document.getElementById("account-number").value = ""
+document.getElementById("add-amount").value = ""
+document.getElementById("add-pin").value = ""
+
 
 })
 
@@ -130,6 +142,17 @@ e.preventDefault()
 // console.log("withdraw button clicked")
 // const amount=parseInt(document.getElementById("withdraw-amount").value)
 const amount=getInputValueNumber("withdraw-amount")
+const agentNumber = getInputValue("agent-number").trim()
+
+if(!/^\d{11}$/.test(agentNumber)){
+    alert("Please provide a valid 11 digit agent number")
+    return;
+}
+const pin = getInputValue("withdraw-pin").trim()
+if(pin !== String(validPin)){
+    alert("Please provide a valid PIN")
+    return;
+}
 
 // const availableBalance=parseInt(document.getElementById("available-balance").innerText)
 const availableBalance=getInnerText("available-balance")
@@ -138,6 +161,7 @@ if(amount<=0 || amount>availableBalance){
     alert("invalid amount")
     return;
 }
+
 // console.log(amount,availableBalance)
 const totalNewAvailableBalance=availableBalance-amount
 console.log(totalNewAvailableBalance)
@@ -152,8 +176,166 @@ const data={
 
 transactionData.push(data)
 console.log(transactionData)
+alert("Cash out successful!")
+
+// clear input fields
+document.getElementById("agent-number").value = ""
+document.getElementById("withdraw-amount").value = ""
+document.getElementById("withdraw-pin").value = ""
 })
 
+
+
+
+// send money feature
+document.getElementById("send-money-btn").addEventListener("click", function(e){
+    e.preventDefault();
+
+    const accountNumber = getInputValue("send-account");
+    const amount = Number(getInputValue("send-amount"));
+    const pin = getInputValueNumber("send-pin");
+    const availableBalance = getInnerText("available-balance");
+
+    if(!/^\d{11}$/.test(accountNumber)){
+        alert("Please provide a valid 11 digit account number");
+        return;
+    }
+
+    if(!Number.isFinite(amount) || amount <= 0){
+        alert("Invalid amount");
+        return;
+    }
+
+    if(amount > availableBalance){
+        alert("Insufficient balance");
+        return;
+    }
+
+    if(pin !== validPin){
+        alert("Please provide a valid PIN");
+        return;
+    }
+
+    const newBalance = availableBalance - amount;
+    setInnerText(newBalance);
+
+    const data = {
+        name: "Send Money",
+        date: new Date().toLocaleTimeString()
+    };
+
+    transactionData.push(data);
+    console.log(transactionData);
+
+    alert("Money sent successfully!");
+
+    document.getElementById("send-account").value = "";
+    document.getElementById("send-amount").value = "";
+    document.getElementById("send-pin").value = "";
+});
+
+// get bonus feature
+
+let bonusUsed = false;
+
+document.getElementById("get-bonus-btn").addEventListener("click", function(e){
+    e.preventDefault();
+
+    const coupon = getInputValue("bonus-coupon").trim().toUpperCase();
+    const availableBalance = getInnerText("available-balance");
+
+    if(coupon !== "PAYOO500"){
+        alert("Invalid coupon code");
+        return;
+    }
+
+    if(bonusUsed === true){
+        alert("You have already used this coupon");
+        return;
+    }
+
+    const bonusAmount = 500;
+    const newBalance = availableBalance + bonusAmount;
+
+    setInnerText(newBalance);
+
+    bonusUsed = true;
+
+    const data = {
+        name: "Get Bonus",
+        date: new Date().toLocaleTimeString()
+    };
+
+    transactionData.push(data);
+    console.log(transactionData);
+
+    alert("Congratulations! You received 500 Taka bonus!");
+
+    document.getElementById("bonus-coupon").value = "";
+});
+
+// pay bill feature
+
+document.getElementById("pay-bill-btn").addEventListener("click", function(e){
+    e.preventDefault();
+
+    const billType = getInputValue("bill-type");
+    const accountNumber = getInputValue("bill-account").trim();
+    const amount = Number(getInputValue("bill-amount"));
+    const pin = getInputValue("bill-pin");
+    const availableBalance = getInnerText("available-balance");
+
+    // check bill type
+    if(billType === ""){
+        alert("Please select a bill type");
+        return;
+    }
+
+    // check account number
+    if(!/^\d{11}$/.test(accountNumber)){
+    alert("Please provide a valid 11 digit billing account number");
+    return;
+}
+
+    // check amount
+    if(!Number.isFinite(amount) || amount <= 0){
+        alert("Invalid amount");
+        return;
+    }
+
+    // check available balance
+    if(amount > availableBalance){
+        alert("Insufficient balance");
+        return;
+    }
+
+    // check PIN
+    if(!/^\d{4}$/.test(pin) || Number(pin) !== validPin){
+        alert("Please provide a valid PIN");
+        return;
+    }
+
+    // update balance
+    const newBalance = availableBalance - amount;
+    setInnerText(newBalance);
+
+    // add transaction history
+    const data = {
+        name: billType + " Bill Payment",
+        date: new Date().toLocaleTimeString()
+    };
+
+    transactionData.push(data);
+    console.log(transactionData);
+
+    alert("Bill paid successfully!");
+
+    // clear input fields
+    document.getElementById("bill-type").value = "";
+    document.getElementById("bill-account").value = "";
+    document.getElementById("bill-amount").value = "";
+    document.getElementById("bill-pin").value = "";
+});
 
 document.getElementById("transactions-button").addEventListener("click",function(){
     const transactionContainer=document.getElementById("transaction-container")

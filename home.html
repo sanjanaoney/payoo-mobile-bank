@@ -80,7 +80,7 @@
         <div>
             <h1 class=" font-semibold">Select A Bank</h1>
             <select id="bank" class="select select-ghostbg-[#f4f5f7] mt-3 rounded-3xl w-full bg-[#f4f5f7] ">
-  <option disabled selected >Select a Bank</option>
+  <option value="" disabled selected>Select a Bank</option>
   <option>Islami Bank</option>
   <option>Dutch Bangla</option>
   <option>IFIC</option>
@@ -127,7 +127,7 @@
             
             <label class="font-semibold" for="">Agent Number</label>
             
-            <input type="text " placeholder="Enter 11 digit number" class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
+            <input id="agent-number" type="text " placeholder="Enter 11 digit number" class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
         </div>
         <br>
         <div>
@@ -140,7 +140,7 @@
         <div>
             <label class="font-semibold" for="">Pin Number</label>
             <br>
-            <input type="text " placeholder="Enter 4 digit pin number" class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
+            <input id="withdraw-pin" type="text " placeholder="Enter 4 digit pin number" class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
             
            
         </div>
@@ -151,21 +151,159 @@
  </div>
 
  <!-- send money -->
-   <div class="form" id="send-money-parent" style="display:none;">
- <h1 class="font-bold text-2xl p-3 ml-1">Send Money</h1>
-  </div>
+<div class="form" id="send-money-parent" style="display:none;">
+  <h1 class="font-bold text-2xl p-3 ml-1">Send Money</h1>
+
+  <form class="bg-white rounded-2xl p-8 mt-3">
+
+    <div>
+      <label class="font-semibold">Recipient Account Number</label>
+      <input
+        id="send-account"
+        type="text"
+        placeholder="Enter 11 digit account number"
+        class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full"
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label class="font-semibold">Amount</label>
+      <input
+        id="send-amount"
+        type="number"
+        placeholder="Enter amount"
+        class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full"
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label class="font-semibold">PIN Number</label>
+      <input
+        id="send-pin"
+        type="text"
+        placeholder="Enter 4 digit PIN"
+        class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full"
+      >
+    </div>
+
+    <button
+      id="send-money-btn"
+      type="button"
+      class="btn bg-[#0874F2] mt-5 w-full rounded-3xl text-white"
+    >
+      Send Money
+    </button>
+
+  </form>
+</div>
 
   <!-- get bonus -->
 
- <div class="form" id="get-bonus-parent" style="display:none;">
- <h1 class="font-bold text-2xl p-3 ml-1">Get Bonus</h1>
-  </div>
+<!-- get bonus -->
+
+<div class="form" id="get-bonus-parent" style="display:none;">
+    <h1 class="font-bold text-2xl p-3 ml-1">Get Bonus</h1>
+
+    <form class="bg-white rounded-2xl p-8 mt-3">
+
+        <div>
+            <label class="font-semibold">Enter Bonus Coupon</label>
+
+            <input
+                id="bonus-coupon"
+                type="text"
+                placeholder="Enter coupon code"
+                class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full"
+            >
+        </div>
+
+        <button
+            id="get-bonus-btn"
+            type="button"
+            class="btn bg-[#0874F2] mt-5 w-full rounded-3xl text-white"
+        >
+            Get Bonus
+        </button>
+
+    </form>
+</div>
 
   <!-- pay bill -->
 
- <div class="form" id="pay-bill-parent" style="display:none;">
- <h1 class="font-bold text-2xl p-3 ml-1">Pay Bill</h1>
-  </div>
+<!-- pay bill -->
+<div class="form" id="pay-bill-parent" style="display:none;">
+    <h1 class="font-bold text-2xl p-3 ml-1">Pay Bill</h1>
+
+    <form class="bg-white rounded-2xl p-8 mt-3">
+
+        <div>
+            <label class="font-semibold">Select Bill Type</label>
+
+            <select
+                id="bill-type"
+                class="select bg-[#f4f5f7] mt-3 rounded-3xl w-full"
+            >
+                <option value="">Select bill type</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Gas">Gas</option>
+                <option value="Water">Water</option>
+                <option value="Internet">Internet</option>
+            </select>
+        </div>
+
+        <br>
+
+        <div>
+            <label class="font-semibold">Billing Account Number</label>
+
+            <input
+                id="bill-account"
+                type="text"
+                placeholder="Enter 11 digit billing account number"
+                class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full"
+            >
+        </div>
+
+        <br>
+
+        <div>
+            <label class="font-semibold">Amount to Pay</label>
+
+            <input
+                id="bill-amount"
+                type="number"
+                placeholder="Enter amount"
+                class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full"
+            >
+        </div>
+
+        <br>
+
+        <div>
+            <label class="font-semibold">PIN Number</label>
+
+            <input
+                id="bill-pin"
+                type="text"
+                placeholder="Enter 4 digit PIN"
+                class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full"
+            >
+        </div>
+
+        <button
+            id="pay-bill-btn"
+            type="button"
+            class="btn bg-[#0874F2] mt-5 w-full rounded-3xl text-white"
+        >
+            Pay Now
+        </button>
+
+    </form>
+</div>
 
   <!-- Transaction -->
  <div class="form" id="transactions-parent" style="display:none;">
